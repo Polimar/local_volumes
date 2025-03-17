@@ -3,6 +3,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import socketService from './services/socketService';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Lazy loading dei componenti per ottimizzazione delle performance
 const Login = lazy(() => import('./components/Login'));
@@ -79,6 +81,18 @@ const App = () => {
   return (
     <AuthProvider>
       <AppContent />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </AuthProvider>
   );
 };

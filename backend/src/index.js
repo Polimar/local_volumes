@@ -4,27 +4,12 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { Server } = require('socket.io');
 const rateLimit = require('express-rate-limit');
-const winston = require('winston');
 const { sequelize, syncDatabase } = require('./models');
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const config = require('./config/config');
 const initAdminUser = require('./scripts/initAdmin');
 const logger = require('./utils/logger');
-
-// Configurazione del logger
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.json()
-  ),
-  transports: [
-    new winston.transports.Console(),
-    new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log' })
-  ]
-});
 
 // Inizializzazione dell'app Express
 const app = express();
