@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwaichat_frontend=self.webpackChunkwaichat_frontend||[]).push([[814],{814:(n,e,i)=>{i.r(e),i.d(e,{default:()=>a});i(43);var s=i(579);const a=()=>(0,s.jsxs)("div",{children:[(0,s.jsx)("h1",{children:"Pannello di Amministrazione"}),(0,s.jsx)("p",{children:"Implementazione in corso..."})]})}}]);
+//# sourceMappingURL=814.30176384.chunk.js.map
