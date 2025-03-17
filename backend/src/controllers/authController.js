@@ -99,7 +99,8 @@ const login = async (req, res) => {
         role: user.role,
         status: user.status
       },
-      token
+      token,
+      redirectToAdmin: user.role === 'admin' // Flag per reindirizzamento al pannello admin
     });
   } catch (error) {
     console.error('Errore durante il login:', error);

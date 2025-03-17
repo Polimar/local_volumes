@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setError(null);
       const response = await api.post('/auth/login', credentials);
-      const { user, token } = response.data;
+      const { user, token, redirectToAdmin } = response.data;
       
       localStorage.setItem('token', token);
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
       setUser(user);
       setToken(token);
       
-      return user;
+      return { user, redirectToAdmin };
     } catch (error) {
       setError(error.response?.data?.message || 'Errore durante il login');
       throw error;

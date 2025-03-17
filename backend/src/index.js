@@ -7,8 +7,10 @@ const rateLimit = require('express-rate-limit');
 const winston = require('winston');
 const { sequelize, syncDatabase } = require('./models');
 const authRoutes = require('./routes/authRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 const config = require('./config/config');
 const initAdminUser = require('./scripts/initAdmin');
+const logger = require('./utils/logger');
 
 // Configurazione del logger
 const logger = winston.createLogger({
@@ -51,6 +53,7 @@ app.get('/', (req, res) => {
 
 // Route API
 app.use('/api/auth', authRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Gestione errori 404
 app.use((req, res) => {

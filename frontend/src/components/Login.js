@@ -131,8 +131,12 @@ const Login = () => {
     setIsLoading(true);
     
     try {
-      await login(formData);
-      navigate('/');
+      const result = await login(formData);
+      if (result && result.redirectToAdmin) {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
     } catch (error) {
       console.error('Errore durante il login:', error);
     } finally {
